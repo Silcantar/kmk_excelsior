@@ -1,6 +1,5 @@
 from kmk.keys import KC, LCTL, LSFT, RSFT
-import unicode as UC
-import macros as MC
+import features.unicode as UC
 
 ________ = KC.TRNS
 XXXXXXXX = KC.NO

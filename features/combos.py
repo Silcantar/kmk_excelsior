@@ -1,6 +1,6 @@
 from kmk.keys import KC
 from kmk.modules.combos import Sequence
-import unicode as UC
+import features.unicode as UC
 
 sequences = [
     Sequence((KC.LEADER, KC.N1, KC.SLSH, KC.N4), UC.ONE_FOURTH, fast_reset=False),
