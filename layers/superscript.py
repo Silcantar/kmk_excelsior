@@ -1,8 +1,8 @@
 from kmk.keys import KC
-from features.alias import ________, XXXXXXXX
+from ..features.alias import ________, XXXXXXXX
 
-import features.alias as AL
-import features.unicode as UC
+from ..features import alias as AL
+from ..features import unicode as UC
 
 # Template for all-transparent layer.
 superscript = [

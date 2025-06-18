@@ -1,15 +1,15 @@
 from kmk.keys import KC
-from features.alias import ________, XXXXXXXX
+from ..features.alias import ________, XXXXXXXX
 
-import features.alias as AL
-import features.unicode as UC
+from ..features import alias as AL
+from ..features import unicode as UC
 
 # Template for all-transparent layer.
 superscript_shifted = [
         # 5b              5a              4               3               2               1               0
                           ________      , ________      , AL.CLEAR      , ________      , ________      , ________      ,   # 00
                           ________      , XXXXXXXX      , UC.SUP_A      , ________      , ________      , ________      ,   # 01
-                          ________      , UC.SUP_Z      , UC.SUP_S      , UC.SUP_W      , ________      , ________      ,   # 02
+                          ________      , ________      , UC.SUP_S      , UC.SUP_W      , ________      , ________      ,   # 02
           ________                      , ________      , UC.SUP_D      , UC.SUP_E      , ________      , ________      ,   # 03
                           XXXXXXXX      , UC.SUP_C      , ________      , UC.SUP_R      , ________      , ________      ,   # 04
           ________                      , UC.SUP_V      , UC.SUP_G      , UC.SUP_T      , ________      , ________      ,   # 05

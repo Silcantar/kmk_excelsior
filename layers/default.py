@@ -1,9 +1,9 @@
 from kmk.keys import KC
-from features.alias import ________, XXXXXXXX
+from ..features.alias import ________, XXXXXXXX
 
-import features.alias as AL
-import features.macros as MC
-import features.unicode as UC
+from ..features import alias as AL
+from ..features import macros as MC
+from ..features import unicode as UC
 
 # Template for all-transparent layer.
 default = [
@@ -20,7 +20,7 @@ default = [
           AL.GREEK                      , KC.COMM       , KC.L          , KC.O          , KC.N9         , KC.F10        ,   # 09
                           KC.RCTL       , KC.DOT        , KC.SCLN       , KC.P          , KC.N0         , KC.F11        ,   # 10
                           KC.RWIN       , KC.SLSH       , KC.QUOT       , KC.LBRC       , KC.MINS       , KC.F12        ,   # 11
-                          KC.APPS       , AL.LM_RSFT    , KC.ENT        , KC.RBRC       , KC.EQL        , KC.F13        ,   # 12
+                          KC.APP        , AL.LM_RSFT    , KC.ENT        , KC.RBRC       , KC.EQL        , KC.F13        ,   # 12
                           KC.RALT       , XXXXXXXX      , KC.BSLS       , KC.BSPC       , KC.F15        , KC.F14        ,   # 13
                           AL.GREEK      , KC.PGDN       , AL.WRDL       , KC.PGUP       , KC.INS        , KC.F16        ,   # 14
                           AL.PASTE      , AL.UNDO       , KC.LEFT       , KC.HOME       , KC.PSCR       , KC.F17        ,   # 15

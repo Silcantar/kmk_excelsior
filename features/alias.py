@@ -1,5 +1,9 @@
-from kmk.keys import KC, LCTL, LSFT, RSFT
-import features.unicode as UC
+from kmk.keys import KC
+from . import unicode as UC
+
+LCTL = KC.LCTL
+LSFT = KC.LSFT
+RSFT = KC.RSFT
 
 ________ = KC.TRNS
 XXXXXXXX = KC.NO
@@ -26,6 +30,7 @@ SUB     = KC.HT(LCTL(KC.EQL)        , KC.MO(6))     # Tap: C-= (MS Word Subscrip
 BOT     = LCTL(KC.END)
 COPY    = LCTL(KC.C)
 CUT     = LCTL(KC.X)
+FIND    = LCTL(KC.F)
 PASTE   = LCTL(KC.V)
 REDO    = LCTL(KC.Y)
 REPL    = LCTL(KC.H)

@@ -1,5 +1,5 @@
 from kmk.keys import KC
-from features.alias import ________, XXXXXXXX
+from ..features.alias import ________, XXXXXXXX
 
 # Template for all-transparent layer.
 transparent = [

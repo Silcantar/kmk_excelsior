@@ -1,7 +1,7 @@
 from kmk.keys import KC
-from features.alias import ________, XXXXXXXX
+from ..features.alias import ________, XXXXXXXX
 
-from kmk.keys import PLAY_SEQUENCE as PS
+PS = KC.PLAY_SEQUENCE
 
 # Template for all-transparent layer.
 macro_play = [

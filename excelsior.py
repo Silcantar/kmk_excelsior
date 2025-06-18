@@ -2,7 +2,7 @@ import board
 import busio
 from digitalio import Pull
 
-from adafruit.mcp23017 import MCP23017
+from lib.adafruit_mcp230xx.mcp23017 import MCP23017 # type: ignore
 
 from kmk.kmk_keyboard import KMKKeyboard
 from kmk.scanners.digitalio import MatrixScanner
@@ -17,81 +17,109 @@ class Excelsior(KMKKeyboard):
         mcp21 = MCP23017(i2c, address=0x21)
         
         # Create and register the scanner.
-        # Columns and rows are reversed from what they should be to 
-        self.matrix = MatrixScanner(
-            cols=(
-                board.GP10,
-                board.GP11,
-                board.GP12,
-                board.GP13,
-                board.GP14,
-                board.GP15,
-                board.GP16,
-                mcp20.get_pin(1),
-                mcp20.get_pin(2),
-                mcp20.get_pin(3),
-                mcp20.get_pin(4),
-                mcp20.get_pin(5),
-                mcp20.get_pin(6),
-                mcp21.get_pin(1),
-                mcp21.get_pin(2),
-                mcp21.get_pin(3),
-                mcp21.get_pin(4),
-                mcp21.get_pin(5),
-                mcp21.get_pin(6)
+        # Columns and rows are 'reversed' from what they should be to make keymaps vertical rather than horizontal.
+        self.matrix = [
+            MatrixScanner(
+                cols=(
+                    board.GP10,
+                    board.GP11,
+                    board.GP12,
+                    board.GP13,
+                    board.GP14,
+                    board.GP15,
+                    board.GP16,
+                ),
+
+                rows=(
+                    board.GP17, 
+                    board.GP18, 
+                    board.GP19, 
+                    board.GP20, 
+                    board.GP21, 
+                    board.GP22, 
+                    board.GP23, 
+                    board.GP24, 
+                    board.GP25, 
+                    board.GP26,
+                    board.GP27,
+                    board.GP28,
+                    board.GP29,
+                    board.GP30,
+                ),
+                
+                diode_orientation=DiodeOrientation.ROW2COL,
+                pull=Pull.UP,
             ),
 
-            rows=(
-                board.GP17, 
-                board.GP18, 
-                board.GP19, 
-                board.GP20, 
-                board.GP21, 
-                board.GP22, 
-                board.GP23, 
-                board.GP24, 
-                board.GP25, 
-                board.GP26,
-                board.GP27,
-                board.GP28,
-                board.GP29,
-                board.GP30,
-                mcp20.get_pin(9),
-                mcp20.get_pin(10),
-                mcp20.get_pin(11),
-                mcp20.get_pin(12),
-                mcp20.get_pin(13),
-                mcp20.get_pin(14),
-                mcp21.get_pin(9),
-                mcp21.get_pin(10),
-                mcp21.get_pin(11),
-                mcp21.get_pin(12),
-                mcp21.get_pin(13),
-                mcp21.get_pin(14)
+            MatrixScanner(
+                cols=(
+                    mcp20.get_pin(1),
+                    mcp20.get_pin(2),
+                    mcp20.get_pin(3),
+                    mcp20.get_pin(4),
+                    mcp20.get_pin(5),
+                    mcp20.get_pin(6),
+                ),
+
+                rows=(
+                    mcp20.get_pin(9),
+                    mcp20.get_pin(10),
+                    mcp20.get_pin(11),
+                    mcp20.get_pin(12),
+                    mcp20.get_pin(13),
+                    mcp20.get_pin(14),
+                ),
+                
+                diode_orientation=DiodeOrientation.ROW2COL,
+                pull=Pull.UP,
             ),
-            
-            diode_orientation=DiodeOrientation.ROW2COL,
-            pull=Pull.UP,
-        )
+
+            MatrixScanner(
+                cols=(
+                    mcp21.get_pin(1),
+                    mcp21.get_pin(2),
+                    mcp21.get_pin(3),
+                    mcp21.get_pin(4),
+                    mcp21.get_pin(5),
+                    mcp21.get_pin(6),
+                ),
+
+                rows=(
+                    mcp21.get_pin(9),
+                    mcp21.get_pin(10),
+                    mcp21.get_pin(11),
+                    mcp21.get_pin(12),
+                    mcp21.get_pin(13),
+                    mcp21.get_pin(14),
+                ),
+                
+                diode_orientation=DiodeOrientation.ROW2COL,
+                pull=Pull.UP,
+            )
+        ]
 
 excelsior = Excelsior()
 
 #******************************************************************************#
 #                                                                              #
-#                               Module Imports                                 #
+#                           Module & Extension Imports                         #
 #                                                                              #
 #******************************************************************************#
 
+#-------------------------------- Hold/Tap ------------------------------------#
+from kmk.modules.holdtap import HoldTap
+excelsior.modules.append(HoldTap())
+
 #--------------------------------- Macros -------------------------------------#
 from kmk.modules.macros import Macros, UnicodeModeWinC
-excelsior.modules.append(Macros(UnicodeMode=UnicodeModeWinC))
+excelsior.modules.append(Macros(unicode_mode=UnicodeModeWinC))
 
 #---------------------------- Combos/Sequences --------------------------------#
 from kmk.modules.combos import Combos
 combos = Combos()
 excelsior.modules.append(combos)
 
-from features.combos import sequences
+from .features.combos import sequences
 combos.combos = sequences
 
 #----------------------------------- Layers -----------------------------------#
@@ -116,23 +144,31 @@ dynamicSequences = DynamicSequences(
 
 excelsior.modules.append(dynamicSequences)
 
+#-------------------------------- International -------------------------------#
+from kmk.extensions.international import International
+excelsior.extensions.append(International())
+
+#--------------------------------- Media Keys ---------------------------------#
+from kmk.extensions.media_keys import MediaKeys
+excelsior.extensions.append(MediaKeys())
+
 
 #***********************************************************************************************************************************************#
 #                                                                                                                                               #
 #                                                                    Keymap                                                                     #
 #                                                                                                                                               #
 #***********************************************************************************************************************************************#
-from layers.default import default
-from layers.custom_shift import custom_shift
-from layers.greek import greek
-from layers.greek_shifted import greek_shifted
-from layers.superscript import superscript
-from layers.superscript_shifted import superscript_shifted
-from layers.subscript import subscript
-from layers.subscript_shifted import subscript_shifted
-from layers.macro_play import macro_play
-from layers.macro_record import macro_record
-from layers.layer_lock import layer_lock
+from .layers.default import default
+from .layers.custom_shift import custom_shift
+from .layers.greek import greek
+from .layers.greek_shifted import greek_shifted
+from .layers.superscript import superscript
+from .layers.superscript_shifted import superscript_shifted
+from .layers.subscript import subscript
+from .layers.subscript_shifted import subscript_shifted
+from .layers.macro_play import macro_play
+from .layers.macro_record import macro_record
+from .layers.layer_lock import layer_lock
 
 excelsior.keymap = [
 

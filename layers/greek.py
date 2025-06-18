@@ -1,9 +1,9 @@
 from kmk.keys import KC
-from features.alias import ________, XXXXXXXX
+from ..features.alias import ________, XXXXXXXX
 
-import features.alias as AL
-import features.macros as MC
-import features.unicode as UC
+from ..features import alias as AL
+from ..features import macros as MC
+from ..features import unicode as UC
 
 # Template for all-transparent layer.
 greek = [

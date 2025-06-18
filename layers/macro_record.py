@@ -1,7 +1,7 @@
 from kmk.keys import KC
-from features.alias import ________, XXXXXXXX
+from ..features.alias import ________, XXXXXXXX
 
-from kmk.keys import RECORD_SEQUENCE as RS
+RS = KC.RECORD_SEQUENCE
 
 # Macro recording layer.
 macro_record = [

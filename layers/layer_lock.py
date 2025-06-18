@@ -1,5 +1,5 @@
 from kmk.keys import KC
-from features.alias import ________, XXXXXXXX
+from ..features.alias import ________, XXXXXXXX
 
 layer_lock = [
         # 5b              5a              4               3               2               1               0
