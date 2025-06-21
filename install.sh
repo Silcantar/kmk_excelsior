@@ -1,0 +1,1 @@
+rsync -avm --delete --filter='merge install.rules' ./ /media/$USER/EXCELSIOR/

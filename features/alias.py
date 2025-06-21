@@ -1,5 +1,5 @@
 from kmk.keys import KC
-from . import unicode as UC
+import features.unicode as UC
 
 LCTL = KC.LCTL
 LSFT = KC.LSFT

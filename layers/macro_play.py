@@ -1,5 +1,5 @@
 from kmk.keys import KC
-from ..features.alias import ________, XXXXXXXX
+from features.alias import ________, XXXXXXXX
 
 PS = KC.PLAY_SEQUENCE
 

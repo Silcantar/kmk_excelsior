@@ -2,11 +2,11 @@ import board
 import busio
 from digitalio import Pull
 
-from Adafruit_CircuitPython_MCP230xx.adafruit_mcp230xx.mcp23017 import MCP23017 # type: ignore
+from adafruit_mcp230xx.mcp23017 import MCP23017 # type: ignore
 
-from kmk_firmware.kmk.kmk_keyboard import KMKKeyboard
-from kmk_firmware.kmk.scanners.digitalio import MatrixScanner
-from kmk_firmware.kmk.scanners import DiodeOrientation
+from kmk.kmk_keyboard import KMKKeyboard
+from kmk.scanners.digitalio import MatrixScanner
+from kmk.scanners import DiodeOrientation
 
 class Excelsior(KMKKeyboard):
     def __init__(self):
