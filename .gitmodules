@@ -1,9 +1,9 @@
-[submodule "kmk_firmware"]
-	path = kmk_firmware
-	url = https://github.com/KMKfw/kmk_firmware.git
-[submodule "Adafruit_CircuitPython_MCP230xx"]
-	path = Adafruit_CircuitPython_MCP230xx
-	url = https://github.com/adafruit/Adafruit_CircuitPython_MCP230xx.git
-[submodule "Adafruit_CircuitPython_SSD1322"]
-	path = Adafruit_CircuitPython_SSD1322
+[submodule "submodules/Adafruit_CircuitPython_SSD1322"]
+	path = submodules/Adafruit_CircuitPython_SSD1322
 	url = https://github.com/adafruit/Adafruit_CircuitPython_SSD1322.git
+[submodule "submodules/Adafruit_CircuitPython_MCP230xx"]
+	path = submodules/Adafruit_CircuitPython_MCP230xx
+	url = https://github.com/adafruit/Adafruit_CircuitPython_MCP230xx.git
+[submodule "submodules/kmk_firmware"]
+	path = submodules/kmk_firmware
+	url = https://github.com/kmkfw/kmk_firmware.git
