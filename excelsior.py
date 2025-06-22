@@ -8,6 +8,13 @@ from kmk.kmk_keyboard import KMKKeyboard
 from kmk.scanners.digitalio import MatrixScanner
 from kmk.scanners import DiodeOrientation
 
+# Imports for Displays
+import displayio
+
+from kmk.extensions.display import Display, TextEntry, ImageEntry
+
+from lib.adafruit_ssd1322 import SSD1322
+
 class Excelsior(KMKKeyboard):
     def __init__(self):
         super().__init__()
@@ -97,3 +104,15 @@ class Excelsior(KMKKeyboard):
                 pull=Pull.UP,
             )
         ]
+
+        # Initialize Displays
+
+        spi = busio.SPI(board.GP2, board.GP3)
+
+        left_display_bus = displayio.FourWire(spi, command=mcp20.get_pin(7), chip_select=mcp_20.get_pin(8), reset=mcp20.get_pin(15), baudrate=1000000)
+        right_display_bus = displayio.FourWire(spi, command=mcp21.get_pin(7), chip_select=mcp_21.get_pin(8), reset=mcp21.get_pin(15), baudrate=1000000)
+
+        time.sleep(1)
+
+        left_display = SSD1322(left_display_bus, width=256, height=64, colstart=28)
+        right_display = SSD1322(right_display_bus, width=256, height=64, colstart=28)
