@@ -1,9 +1,6 @@
 -/ .*
 -/ */.*
--/ kmk/boards
--/ kmk/user_keymaps
--/ kmk_firmware
--/ Adafruit_CircuitPython*
+-/ submodules
 
 +/ *.py
 +/ */
